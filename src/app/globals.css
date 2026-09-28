@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@500;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --font-brand: 'Syne', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-arabic: 'Cairo', sans-serif;
+
+  --bg-primary: #09090B;
+  --bg-secondary: #121215;
+  --bg-card: #18181B;
+  --bg-card-hover: #222227;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(255, 255, 255, 0.22);
+  
+  --accent-blue: #3B82F6;
+  --accent-amber: #F59E0B;
+  --text-primary: #FAFAFA;
+  --text-muted: #A1A1AA;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+html[dir="rtl"] body {
+  font-family: var(--font-arabic), var(--font-sans);
+}
+
+html[dir="rtl"] .font-brand {
+  font-family: var(--font-arabic), var(--font-brand);
+  letter-spacing: normal;
+}
+
+html[dir="rtl"] .font-display {
+  font-family: var(--font-arabic), var(--font-display);
+  letter-spacing: normal;
+}
+
+/* Custom Typography Utilities */
+.font-brand {
+  font-family: var(--font-brand);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-spec {
+  font-family: var(--font-mono);
+}
+
+/* Subtle architectural borders */
+.border-subtle {
+  border-color: var(--border-subtle);
+}
+
+.glass-panel {
+  background: rgba(18, 18, 21, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-card {
+  background: rgba(24, 24, 27, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(30, 30, 35, 0.85);
+  border-color: var(--border-active);
+  transform: translateY(-2px);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom minimalist scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3F3F46;
+}
+
+/* Pulse badge */
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse-subtle {
+  animation: subtle-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Touch & Accessibility standards from UI/UX Pro Max */
+button, a {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
