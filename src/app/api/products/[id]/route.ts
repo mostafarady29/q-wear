@@ -7,7 +7,7 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    const { product, related } = getDbProductById(id);
+    const { product, related } = await getDbProductById(id);
 
     if (!product) {
       return NextResponse.json(

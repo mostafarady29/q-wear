@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const orders = getUserDbOrders(email);
+    const orders = await getUserDbOrders(email);
 
     return NextResponse.json({
       success: true,

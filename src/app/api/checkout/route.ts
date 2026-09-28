@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     const orderId = 'Q-ORD-' + Math.floor(100000 + Math.random() * 900000);
     const trackingCode = 'Q-TRACK-' + Math.random().toString(36).substring(2, 9).toUpperCase();
 
-    const order = createDbOrder({
+    const order = await createDbOrder({
       orderId,
       trackingCode,
       customerEmail: customer.email,

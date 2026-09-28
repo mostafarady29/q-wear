@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const maxPrice = searchParams.get('maxPrice') ? Number(searchParams.get('maxPrice')) : undefined;
     const minGsm = searchParams.get('minGsm') ? Number(searchParams.get('minGsm')) : undefined;
 
-    const products = getDbProducts({
+    const products = await getDbProducts({
       category,
       search,
       sort,

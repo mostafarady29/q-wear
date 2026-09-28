@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     }
 
     const normalizedEmail = email.toLowerCase().trim();
-    const userRecord = getUserByEmail(normalizedEmail);
+    const userRecord = await getUserByEmail(normalizedEmail);
 
     if (!userRecord) {
       return NextResponse.json(

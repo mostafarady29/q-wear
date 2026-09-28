@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const pass = createDbVipPass(email, city);
+    const pass = await createDbVipPass(email, city);
 
     return NextResponse.json({
       success: true,

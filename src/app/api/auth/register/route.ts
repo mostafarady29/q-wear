@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     const hasVipCode = vipCode && (vipCode.trim().toUpperCase() === 'QVIP10' || vipCode.trim().toUpperCase() === 'STUDIOQ');
     const tier: 'CLIENT' | 'OBSIDIAN VIP' = hasVipCode ? 'OBSIDIAN VIP' : 'CLIENT';
 
-    const newUser = createUser({
+    const newUser = await createUser({
       name: name.trim(),
       email: email.toLowerCase().trim(),
       password: pass,
